@@ -14,11 +14,14 @@ import FooterLayout from './../../common/FooterLayout';
 import ANH1 from './../../image/ANH1.png';
 import ANH2 from './../../image/img_clinic.PNG';
 import LoadingIsEmpty from '../../common/LoadingIsEmpty';
+import { ACCESS_TOKEN } from '../../constants';
 class ClinicList extends Component {
     constructor(props) {
         super(props);
         this.play = this.play.bind(this);
+        this.token = localStorage.getItem(ACCESS_TOKEN)
     }
+
 
     play() {
         this.slider.slickPlay();
@@ -83,16 +86,22 @@ class ClinicList extends Component {
                         <CardImg variant="top" src={ANH2} />
                     </div>
                     <div className="sign-show">
-                        <CardText className="sign-title">Đăng nhập để đặt lịch khám !</CardText>
-                        <Link to={"/login"}>
-                            <Button style={{ width: "200px" }} type="primary" >
-                                Đăng nhập ngay
-                            </Button>
-                        </Link>
+                        {this.token ? <div>
+                            <p style={{fontSize:30, fontWeight:'bold',color:"green"}}>Wellcome</p>
+                        </div> :
+                            <div>
+                                <CardText className="sign-title">Đăng nhập để đặt lịch khám !</CardText>
+                                <Link to={"/login"}>
+                                    <Button style={{ width: "200px" }} type="primary" >
+                                        Đăng nhập ngay
+                                    </Button>
+                                </Link>
 
-                        <Link to={"/signup"}>
-                            <Button type="link">Đăng ký tài khoản</Button>
-                        </Link>
+                                <Link to={"/signup"}>
+                                    <Button type="link">Đăng ký tài khoản</Button>
+                                </Link>
+                            </div>
+                        }
                     </div>
                 </div>
 
@@ -181,10 +190,10 @@ class ClinicList extends Component {
                                 historyBookedDoctor && historyBookedDoctor.object ? (
                                     <div>
                                         {
-                                            historyBookedDoctor.object  ? (
+                                            historyBookedDoctor.object ? (
                                                 <CardText className="title-title">
                                                     Bác sĩ bạn đã đặt lịch
-                                            </CardText>
+                                                </CardText>
                                             ) : ""
                                         }
 

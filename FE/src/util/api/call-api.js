@@ -272,7 +272,7 @@ export async function  sendEmailBooking(booking) {
 
 export async function  sendEmailBookedBusyy(id_booked) {
 	let data = {};
-	await callAPI("send-email/busyy/"+id_booked,'GET')
+	await callAPI("booking/send-email/busy/"+id_booked,'GET')
 		.then(response =>{
 			data = Object.assign({}, data);
 			data =  response

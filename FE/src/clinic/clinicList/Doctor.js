@@ -42,6 +42,7 @@ const genderData = [
 class DoctorClinic extends Component {
     constructor(props) {
         super(props);
+        
         this.state = {
             visibleCommnet: false,
             visibleBooking: false,
@@ -676,6 +677,8 @@ class DoctorClinic extends Component {
         }
     }
 
+    
+
     render() {
         // console.log(this.state)
         return (
@@ -770,7 +773,7 @@ class DoctorClinic extends Component {
                                                     </div>
                                                     <div className="modal-area-commnet">
                                                         <TextArea className="text-area-commnet" placeholder="Viết bình luận ..."
-                                                            autosize={{ minRows: 2, maxRows: 3 }}
+                                                            
                                                             name='contentCommnet'
                                                             value={this.state.contentCommnet.value}
                                                             onChange={(event) => this.handleInputChange(event)} />
