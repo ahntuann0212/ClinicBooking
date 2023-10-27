@@ -45,7 +45,7 @@ public class BookingController {
 	}
 	
 	
-	@RequestMapping(value="/update", method = RequestMethod.PUT)
+	@RequestMapping(value="/update", method = RequestMethod.POST)
 	public ResponseEntity<?> updateBooking(@CurrentUser UserPrincipal currentUser,@Valid @RequestBody BookingRequestUpdate bookingRequestUpdate){
 		DataResponse data = bookingService.updateBooking(bookingRequestUpdate, currentUser);
 		if(data.getSuccess() == false) {
@@ -81,7 +81,7 @@ public class BookingController {
 		emailService.sendEmailBookingBussy(currentUser.getId(), id_booked);;
 		return ResponseEntity.ok().body(new ApiResponse(true, "Đã gửi mail !!"));
 	}
-	
+
 	@RequestMapping(value="/delete/{id_booking}", method = RequestMethod.POST)
 	public ResponseEntity<?> deleteBookeds(@PathVariable("id_booking") String id_booking){
 		DataResponse data = bookingService.deleteBooking(id_booking);
